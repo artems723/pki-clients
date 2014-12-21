@@ -1,0 +1,30 @@
+A sample Microsoft CA "Certificate Enrollment Web Service" 
+client is located in:
+
+com.wfsc.pki.utl.ws.ces.client.gordon.test.Invoke_Test_Client
+
+Run Main() to:
+
+1. Generate a new CSR
+2. submit request to CA
+3. retrieve signed certificate and save to file as:
+{project path}/cert.cer
+
+Change the value of:
+MEXuRI
+to point at a different CA.
+
+Change the value of:
+TemplateName
+To use a different certificate template name
+
+Change the value of:
+SubjectDN
+To use a different subject DN name
+
+files:
+{project path}/cacerts contains the truststore for authentication to the MSCA web service
+{project path}/scat-pki_service-dev-7252012.pfx contains the PKI Service Account credential
+{project path}/lib contains various web service libraries required to communicate with the CA
+
+This client requires JRE 6
