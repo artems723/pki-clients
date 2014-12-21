@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>KMIP</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>full,incremental,</triggers>
+			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/Make_KMIP_JAR.launch</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.tssap.selena.model.modeling_nature</nature>
+		<nature>com.borland.selena.uml20.uml20_nature</nature>
+	</natures>
+	<variableList>
+		<variable>
+			<name>KLMSDBPath</name>
+			<value>$%7BWORKSPACE_LOC%7D/KLMSDB</value>
+		</variable>
+		<variable>
+			<name>KLMSPath</name>
+			<value>$%7BWORKSPACE_LOC%7D/KLMS</value>
+		</variable>
+	</variableList>
+</projectDescription>
