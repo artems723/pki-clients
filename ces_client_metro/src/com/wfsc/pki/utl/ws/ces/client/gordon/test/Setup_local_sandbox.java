@@ -11,26 +11,27 @@ public class Setup_local_sandbox {
 		
 		if (proxy !=false) {
 			//Enable these to deal with proxy issues:
-			System.setProperty("http.proxyHost", "proxy-az.wellsfargo.com");
-			System.setProperty("http.proxyPort", "80");
-			System.setProperty("http.noProxyHosts", "localhost|pkisaztmwsca00a.ent.wfb.bank.local");
+			//System.setProperty("http.proxyHost", "proxy-az.wellsfargo.com");
+			//System.setProperty("http.proxyPort", "80");
+			//System.setProperty("http.noProxyHosts", "localhost|pkisaztmwsca00a.ent.wfb.bank.local");
 		}
 
+		//should never need to allow unsafe renego- tune the server instead.
 		//java.lang.System.setProperty("sun.security.ssl.allowUnsafeRenegotiation", "true");
 		//System.setProperty("sun.security.ssl.allowUnsafeRenegotiation", "true");
 		// set the trust and keystores to local admin.jks file
-		System.setProperty("javax.net.ssl.trustStore", "./wsca00-local.jks");
+        System.setProperty("javax.net.ssl.trustStore", "./cacerts.jks");
 		System.setProperty("javax.net.ssl.trustStoreType", "jks");
 		System.setProperty("net.ssl.trustStorePassword", "changeit");
 		
-		System.setProperty("javax.net.ssl.keyStore", "./scat-pki_service-local-8122011.pfx");
+		System.setProperty("javax.net.ssl.keyStore", "./svc-ces_client.pfx");
 		System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 		System.setProperty("javax.net.ssl.keyStorePassword", "Password1!");
 			
 		//Turn on SSL Debug:
 		if(ssl_debug !=false){
-		System.setProperty("javax.net.debug", "all");
-		//ssl,handshake or all
+		//System.setProperty("javax.net.debug", "SSL,handshake,trustmanager");
+			System.setProperty("javax.net.debug", "all");
 		}
 	}
 }
