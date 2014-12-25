@@ -52,8 +52,8 @@ public class Invoke_Test_Client {
 		Setup_prod.Go(ssl_debug, proxy_on);
 		
 		//name of certificate enrollment template
-		String TemplateName = "wf_ws_bec";
-		String SubjectDN = 	"cn=gordon Young,ou=pki,o=Wells Fargo,c=US";
+		String TemplateName = "ACMEWebServer";
+		String SubjectDN = 	"cn=gordon Young,ou=pki,o=ACME Corp,c=US";
 		//subjectDN email:
 		String dnEmail = "test@test.local";
 		
@@ -70,7 +70,7 @@ public class Invoke_Test_Client {
 		
 		//get SecurityTokenService port, binding, service names, 
 		//Endpoint URI and other info via WS-MetaData-Exchange aka MEX
-		String MEXuRI = "https://pkisaztmwsca00u.ent.wfb.bank.qa/WellsSecure%20UAT%20Certificate%20Authority_CES_Certificate/service.svc";
+		String MEXuRI = "https://goyoung-dc01.corp.gordonjyoung.com/ACME%20Issuing%20CA_CES_Certificate/service.svc";
 		
 		//"Request Attribute" names and values
 		//These are read by the policy module to be added to the certificate subject DN

@@ -51,11 +51,11 @@ public class Retrieve_Certificate_By_ReqID {
 		Setup_prod.Go(ssl_debug, proxy_on);
 		
 		//Set RequestID to a certifcate RequestID that you want to download:
-		String RequestID ="30";
+		String RequestID ="10";
 		
 		//get SecurityTokenService port, binding, service names, 
 		//Endpoint URI and other info via WS-MetaData-Exchange aka MEX
-		String MEXuRI = "https://evca00.ent.wfb.bank.dev/Wells%20Fargo%20DEV%20Public%20Primary%20Certificate%20Authorit-00121_CES_Certificate/service.svc";
+		String MEXuRI = "https://goyoung-dc01.corp.gordonjyoung.com/ACME%20Issuing%20CA_CES_Certificate/service.svc";
 		
 		//Set this to CER or P7B, CER is the certificate only, P7B is the PKCS#7 chainfile containing root, subCA and certificate
 		String CertFormat = "CER";

@@ -11,9 +11,9 @@ public class Setup_prod {
 		
 		if (proxy !=false) {
 			//Enable these to deal with proxy issues:
-			System.setProperty("http.proxyHost", "proxy-az.wellsfargo.com");
+			System.setProperty("http.proxyHost", "proxy.gordonjyoung..com");
 			System.setProperty("http.proxyPort", "80");
-			System.setProperty("http.noProxyHosts", "localhost|enca01.ent.wfb.bank.dev");
+		    System.setProperty("http.noProxyHosts", "localhost|somehost.corp.gordonjyoung.com");
 		}
 		
 		// set the trust and keystores to local admin.jks file
@@ -21,9 +21,10 @@ public class Setup_prod {
 		System.setProperty("javax.net.ssl.trustStoreType", "jks");
 		System.setProperty("net.ssl.trustStorePassword", "changeit");
 		
-		System.setProperty("javax.net.ssl.keyStore", "./scat_pki-service-uat.p12");
+		System.setProperty("javax.net.ssl.keyStore", "./svc-ces_client.pfx");
 		System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 		System.setProperty("javax.net.ssl.keyStorePassword", "Password1!");
+			
 			
 		//Turn on SSL Debug:
 		if(ssl_debug !=false){

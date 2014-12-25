@@ -11,9 +11,9 @@ public class Setup_local_sandbox {
 		
 		if (proxy !=false) {
 			//Enable these to deal with proxy issues:
-			//System.setProperty("http.proxyHost", "proxy-az.wellsfargo.com");
-			//System.setProperty("http.proxyPort", "80");
-			//System.setProperty("http.noProxyHosts", "localhost|pkisaztmwsca00a.ent.wfb.bank.local");
+			System.setProperty("http.proxyHost", "proxy.gordonjyoung..com");
+			System.setProperty("http.proxyPort", "80");
+		    System.setProperty("http.noProxyHosts", "localhost|somehost.corp.gordonjyoung.com");
 		}
 
 		//should never need to allow unsafe renego- tune the server instead.
