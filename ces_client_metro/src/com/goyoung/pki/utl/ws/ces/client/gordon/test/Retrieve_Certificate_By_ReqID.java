@@ -1,4 +1,4 @@
-package com.wfsc.pki.utl.ws.ces.client.gordon.test;
+package com.goyoung.pki.utl.ws.ces.client.gordon.test;
 
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.net.URISyntaxException;
-import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
@@ -20,68 +19,47 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.SOAPException;
 import javax.xml.stream.XMLStreamException;
 
-import org.bouncycastle.util.encoders.Base64;
 import org.xml.sax.SAXException;
 
+import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.xml.ws.api.security.trust.WSTrustException;
+import com.sun.xml.wss.impl.misc.Base64;
 
 /**
+ * This class demonstrates a request for a previously issued certificate 
+ * This requests calls the CES to download a certificate by Microsoft's MS-WSTEP <RequestID> element
  * @author Gordon Young Invoke the test client to create a dispatch, and parse
  *         the response
- * 		   Observe STS_Test_Client to see a sample SecurityTokenService client
- *
+ * 		   See STS_Retrieve_By_ReqID.java to see a sample SecurityTokenService where certs are retrieved
+ * 		   by  the "RequestID"
+ * 
  */
 
-//TODO: set up the EV_SSL CA
-//TODO: test ACL when using the "TrueExtender"
-//TODO: can we set perms on the policy module registry keys for CAO user group only?
-
-public class Invoke_Test_Client {
-
+public class Retrieve_Certificate_By_ReqID {
+	
 	public static void main(String[] args) throws InvalidKeyException,
 			NoSuchAlgorithmException, NoSuchProviderException,
 			SignatureException, SOAPException, IOException,
-			ParserConfigurationException, SAXException, WSTrustException, URISyntaxException, XMLStreamException, CertificateException, InvalidAlgorithmParameterException {
+			ParserConfigurationException, SAXException, WSTrustException, URISyntaxException, XMLStreamException, Base64DecodingException, CertificateException {
 
 		// the ssl_debug enables or disables ssl debugging.., 
-		// proxy_on=true enables proxy settings (use proxy server to get XML Schema)
+		// proxy_on=true enables proxy settings
 		boolean ssl_debug = true;
 		boolean proxy_on = true;
 		
 		//set some system properties,
 		Setup_prod.Go(ssl_debug, proxy_on);
 		
-		//name of certificate enrollment template
-		String TemplateName = "wf_ws_bec";
-		String SubjectDN = 	"cn=gordon Young,ou=pki,o=Wells Fargo,c=US";
-		//subjectDN email:
-		String dnEmail = "test@test.local";
-		
-		//generate a CSR
-		String CSR = GenCSR.Go(SubjectDN);
-		
-		//put a bunch of SAN:dns fields in the cert..
-		//These are read by the policy module to be added to the certificate subject DN
-		String SAN = "DNS=www.gordon.edu&DNS=www.gordon.org&DNS=www.google.com&DNS=www1.google.com&email=test.test@gmail.com&DNS=www2.google.com";
-		
-		//Certificate Format to return from request
-		//CER = Certificate P7B = PKCS7 chain of certificates
-		String CertFormat = "CER";
+		//Set RequestID to a certifcate RequestID that you want to download:
+		String RequestID ="30";
 		
 		//get SecurityTokenService port, binding, service names, 
 		//Endpoint URI and other info via WS-MetaData-Exchange aka MEX
-		String MEXuRI = "https://pkisaztmwsca00u.ent.wfb.bank.qa/WellsSecure%20UAT%20Certificate%20Authority_CES_Certificate/service.svc";
+		String MEXuRI = "https://evca00.ent.wfb.bank.dev/Wells%20Fargo%20DEV%20Public%20Primary%20Certificate%20Authorit-00121_CES_Certificate/service.svc";
 		
-		//"Request Attribute" names and values
-		//These are read by the policy module to be added to the certificate subject DN
-		String OU1 = "ent";
-		String OU2 = "cps";
-		String OU3 = "pki";
-		String OU4 = null;//"CC_PKI_Groups";
-		String OU5 = null;//"CA_Admins";
-				
-		//request a certificate
-		String requested_Certificate = STS_Test_Client.Go(CSR, SAN, TemplateName, CertFormat, MEXuRI, "Years", "2", OU1, OU2, OU3, OU4, OU5, dnEmail);
+		//Set this to CER or P7B, CER is the certificate only, P7B is the PKCS#7 chainfile containing root, subCA and certificate
+		String CertFormat = "CER";
+		String requested_Certificate = STS_Retrieve_By_ReqID.Go(RequestID, MEXuRI, CertFormat);
 		
 		//decode the returned token
 		byte[] cert = Base64.decode(requested_Certificate);
@@ -91,8 +69,6 @@ public class Invoke_Test_Client {
 	    os.write(cert);
 	    os.close();		
 	    
-	    //do something useful with the issued certificate
-	    //like evaluate RDN Components and Extensions..
 	    InputStream inStream = new FileInputStream("./cert.crt");
 	    CertificateFactory cf = CertificateFactory.getInstance("X.509");
 	    X509Certificate clientCert = (X509Certificate) cf.generateCertificate(inStream);
@@ -102,6 +78,7 @@ public class Invoke_Test_Client {
 	    BigInteger serialNum = clientCert.getSerialNumber();
 	    String serialS = serialNum.toString(16);
 	    System.out.println("Serial #: "  + serialS);
-	    
+	    System.out.println("subject: " + clientCert.getSubjectDN().toString());
+
 	}
 }

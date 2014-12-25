@@ -1,4 +1,4 @@
-package com.wfsc.pki.utl.ws.ces.client.gordon.test;
+package com.goyoung.pki.utl.ws.ces.client.gordon.test;
 
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -36,7 +36,7 @@ import com.sun.xml.ws.api.security.trust.WSTrustException;
 //TODO: test ACL when using the "TrueExtender"
 //TODO: can we set perms on the policy module registry keys for CAO user group only?
 
-public class Invoke_Test_Client_Local_Sandbox {
+public class Invoke_Test_Client {
 
 	public static void main(String[] args) throws InvalidKeyException,
 			NoSuchAlgorithmException, NoSuchProviderException,
@@ -46,14 +46,14 @@ public class Invoke_Test_Client_Local_Sandbox {
 		// the ssl_debug enables or disables ssl debugging.., 
 		// proxy_on=true enables proxy settings (use proxy server to get XML Schema)
 		boolean ssl_debug = true;
-		boolean proxy_on = false;
+		boolean proxy_on = true;
 		
 		//set some system properties,
-		Setup_local_sandbox.Go(ssl_debug, proxy_on);
+		Setup_prod.Go(ssl_debug, proxy_on);
 		
 		//name of certificate enrollment template
-		String TemplateName = "ACMEWebServer";
-		String SubjectDN = 	"cn=gordon Young,ou=pki,o=ACME Corporation,c=US";
+		String TemplateName = "wf_ws_bec";
+		String SubjectDN = 	"cn=gordon Young,ou=pki,o=Wells Fargo,c=US";
 		//subjectDN email:
 		String dnEmail = "test@test.local";
 		
@@ -70,7 +70,7 @@ public class Invoke_Test_Client_Local_Sandbox {
 		
 		//get SecurityTokenService port, binding, service names, 
 		//Endpoint URI and other info via WS-MetaData-Exchange aka MEX
-		String MEXuRI = "https://goyoung-dc01.corp.gordonjyoung.com/ACME%20Issuing%20CA_CES_Certificate/service.svc";
+		String MEXuRI = "https://pkisaztmwsca00u.ent.wfb.bank.qa/WellsSecure%20UAT%20Certificate%20Authority_CES_Certificate/service.svc";
 		
 		//"Request Attribute" names and values
 		//These are read by the policy module to be added to the certificate subject DN

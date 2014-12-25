@@ -1,4 +1,4 @@
-package com.wfsc.pki.utl.ws.ces.client.gordon.test;
+package com.goyoung.pki.utl.ws.ces.client.gordon.test;
 
 public class Setup_prod {
 
