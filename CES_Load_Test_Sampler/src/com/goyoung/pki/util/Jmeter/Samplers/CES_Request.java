@@ -1,7 +1,7 @@
-package com.wfsc.pki.util.Jmeter.Samplers;
+package com.goyoung.pki.util.Jmeter.Samplers;
 
-import com.wfsc.pki.utl.ws.ces.client.gordon.test.STS_Test_Client;
-import com.wfsc.pki.utl.ws.ces.client.gordon.test.Setup_prod;
+import com.goyoung.pki.utl.ws.ces.client.gordon.test.STS_Test_Client;
+import com.goyoung.pki.utl.ws.ces.client.gordon.test.Setup_prod;
 
 public class CES_Request {
 

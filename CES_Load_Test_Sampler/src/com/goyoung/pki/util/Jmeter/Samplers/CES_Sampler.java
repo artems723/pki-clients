@@ -1,4 +1,4 @@
-package com.wfsc.pki.util.Jmeter.Samplers;
+package com.goyoung.pki.util.Jmeter.Samplers;
 
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
@@ -29,7 +29,7 @@ public class CES_Sampler extends AbstractJavaSamplerClient {
 		boolean result = false;
 
 		try {
-			result = com.wfsc.pki.util.Jmeter.Samplers.CES_Request.main(TemplateName, SubjectDN, dnEmail, SAN, CertFormat, MEXuRI, OU1, OU2, OU3, OU4, OU5, 
+			result = com.goyoung.pki.util.Jmeter.Samplers.CES_Request.main(TemplateName, SubjectDN, dnEmail, SAN, CertFormat, MEXuRI, OU1, OU2, OU3, OU4, OU5, 
 					cacerts, cacerts_passwd,  authP12, authP12_passwd);
 			
 			System.out.println("result: " + result);

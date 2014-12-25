@@ -1,4 +1,4 @@
-package com.wfsc.pki.util.Jmeter.Samplers;
+package com.goyoung.pki.util.Jmeter.Samplers;
 
 public class Version {
 
