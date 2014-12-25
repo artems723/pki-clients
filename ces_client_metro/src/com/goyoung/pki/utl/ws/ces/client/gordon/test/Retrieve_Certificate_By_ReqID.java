@@ -51,7 +51,7 @@ public class Retrieve_Certificate_By_ReqID {
 		Setup_prod.Go(ssl_debug, proxy_on);
 		
 		//Set RequestID to a certifcate RequestID that you want to download:
-		String RequestID ="10";
+		String RequestID ="23";
 		
 		//get SecurityTokenService port, binding, service names, 
 		//Endpoint URI and other info via WS-MetaData-Exchange aka MEX

@@ -52,7 +52,7 @@ public class Invoke_Test_Client_Local_Sandbox {
 		Setup_local_sandbox.Go(ssl_debug, proxy_on);
 		
 		//name of certificate enrollment template
-		String TemplateName = "ACMEWebServer";
+		String TemplateName = "ACMEDeviceAuthentication";
 		String SubjectDN = 	"cn=gordon Young,ou=pki,o=ACME Corporation,c=US";
 		//subjectDN email:
 		String dnEmail = "test@test.local";
