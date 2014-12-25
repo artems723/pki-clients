@@ -52,17 +52,17 @@ public class CES_Sampler extends AbstractJavaSamplerClient {
 		Arguments args = new Arguments();
 		args.addArgument("cacerts_file","./lib/ext/cacerts.jks");
 		args.addArgument("cacerts_file_passwd","changeit");
-		args.addArgument("auth_p12","./lib/ext/scat_pki-service-uat.p12");	
+		args.addArgument("auth_p12","./lib/ext/svc-ces_client.pfx");	
 		args.addArgument("auth_p12_passwd","Password1!");
-		args.addArgument("TemplateName","wf_ssl");
-		args.addArgument("SubjectDN", "cn=gordon Young,ou=pki,o=Wells Fargo,c=US");
+		args.addArgument("TemplateName","ACMEWebServer");
+		args.addArgument("SubjectDN", "cn=gordon Young,ou=pki,o=ACME Corp,c=US");
 		args.addArgument("dnEmail", "gordon.young@example.local");
 		args.addArgument("SAN", "DNS=www.gordon.edu&DNS=www.gordon.org&DNS=www.google.com&DNS=www1.google.com&email=test.test@gmail.com&DNS=www2.google.com");
 		args.addArgument("CertFormat", "CER");
-		args.addArgument("MEXuRI", "https://pkisaztmwsca00u.ent.wfb.bank.qa/WellsSecure%20UAT%20Certificate%20Authority_CES_Certificate/service.svc");
-		args.addArgument("OU1", "ent");
-		args.addArgument("OU2", "cps");
-		args.addArgument("OU3", "pki");
+		args.addArgument("MEXuRI", "https://goyoung-dc01.corp.gordonjyoung.com/ACME%20Issuing%20CA_CES_Certificate/service.svc");
+		args.addArgument("OU1", "corp");
+		args.addArgument("OU2", "acme");
+		args.addArgument("OU3", "com");
 		args.addArgument("OU4", "");
 		args.addArgument("OU5", "");
 
