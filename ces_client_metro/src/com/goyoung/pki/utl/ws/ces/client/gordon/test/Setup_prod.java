@@ -21,7 +21,7 @@ public class Setup_prod {
 		System.setProperty("javax.net.ssl.trustStoreType", "jks");
 		System.setProperty("net.ssl.trustStorePassword", "changeit");
 		
-		System.setProperty("javax.net.ssl.keyStore", "./svc-ces_client.pfx");
+		System.setProperty("javax.net.ssl.keyStore", "./svc-ces_client-acme01.p12");
 		System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 		System.setProperty("javax.net.ssl.keyStorePassword", "Password1!");
 			

@@ -25,7 +25,7 @@ public class Setup_local_sandbox {
 		System.setProperty("net.ssl.trustStorePassword", "changeit");
 		
 		System.setProperty("javax.net.ssl.keyStore", "./svc-ces_client.pfx");
-		System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
+        System.setProperty("javax.net.ssl.keyStoreType", "PKCS12");
 		System.setProperty("javax.net.ssl.keyStorePassword", "Password1!");
 			
 		//Turn on SSL Debug:
